@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-@Component
 public class UsdConverter implements CurrencyExchange {
     @Value("#{new java.math.BigDecimal(${currency.rate.usd})}")
     private BigDecimal bdRate;

@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-@Component
 public class RubConverter implements CurrencyExchange {
     @Value("#{new java.math.BigDecimal(${currency.rate.rub})}")
     private BigDecimal bdRate;
+    String sWarning = "";
     @Override
     public String getExchange(int byn) {
-        return "RUB cost = " + new BigDecimal(byn).multiply(bdRate, MathContext.DECIMAL64);
+        return "RUB cost = " + new BigDecimal(byn).multiply(bdRate, MathContext.DECIMAL64) + "\n" + sWarning;
     }
 }
