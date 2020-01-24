@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sTm1985:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>sTm1985</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="sTm1985.war">
+      <element id="artifact" artifact-name="sTm1985:war exploded" />
+    </root>
+  </artifact>
+</component>

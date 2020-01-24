@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+   <context:property-placeholder location="classpath:application.properties"/>
+    <context:component-scan base-package="by.sTm.target1"/>
+
+    <bean id="usd_b" name="usdConverter"
+          class="by.sTm.target1.UsdConverter">
+        <property name="bdRate" value="${currency.rate.usd}"/>
+    </bean>
+    <bean id="euro_b"
+          class="by.sTm.target1.EuroConverter">
+        <constructor-arg value="${currency.rate.euro}"/>
+    </bean>
+    <bean id="rub_b"
+          class="by.sTm.target1.RubConverter">
+        <constructor-arg value="${currency.rate.rub}"/>
+    </bean>
+
+    <bean id="engine"
+          class="by.sTm.target1.CurExEngine">
+        <constructor-arg name="ceList1">
+            <map>
+                <entry key="${currency.name.usd}" value-ref="usd_b"/>
+                <entry key="${currency.name.euro}" value-ref="euro_b"/>
+                <entry key="${currency.name.rub}" value-ref="rub_b"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg name="carMap">
+            <map>
+                <entry key="BMW" value="${price.BMW}"/>
+                <entry key="Audi" value="${price.Audi}"/>
+                <entry key="Mercedes" value="${price.Mercedes}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+</beans>
