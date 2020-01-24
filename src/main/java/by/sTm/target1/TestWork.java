@@ -10,10 +10,10 @@ public class TestWork {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml"
         );
-        CurExEngine cee = context.getBean("engine", CurExEngine.class);
+        CurExEngine cee = context.getBean("curExEngine", CurExEngine.class);
         String sCarMark = "", sCurrencyName = "", sFilePath = "";
         if (args.length >= 2) {
-            sCurrencyName = args[0];
+            sCurrencyName = args[0] + "Converter";
             sCarMark = args[1];
         }
         if (args.length == 3) {sFilePath = args[2];}
