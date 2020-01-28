@@ -11,17 +11,18 @@ import java.util.HashMap;
 @Configuration
 @ComponentScan("by.sTm.target1")
 @PropertySource("classpath:application.properties")
-public class SpringConfig {
+class SpringConfig {
     @Bean
     public CurExEngine curExEngineBean() { return new CurExEngine(new HashMap<>()); }
 
-    @Bean
+    //--Называем бины как нам удобно, а не по авто-имени бина usdBean и т.д.
+    @Bean ("usd")
     public CurrencyExchange usdBean() { return new UsdConverter(); }
 
-    @Bean
+    @Bean ("euro")
     public CurrencyExchange euroBean() { return new EuroConverter(); }
 
-    @Bean
+    @Bean ("rub")
     public CurrencyExchange rubBean() {
         RubConverter rubConverter = new RubConverter();
         //--Инициализация поля

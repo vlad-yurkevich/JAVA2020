@@ -17,7 +17,8 @@ public class CurExEngine {
     @Value("#{${map.car.price}}")
     private Map<String, Integer> carList;
     public CurExEngine(Map<String, CurrencyExchange> ceList1)  {this.ceList = ceList1;}
-    void getResult(String carName, String curName, String filePath) throws IOException {
+
+    void getResult(String carName, String curName, String filePath) {
         String sResult = this.ceList.get(curName).getExchange((carList.get(carName)));
         if (filePath.equals("")) {System.out.println(sResult);}
         else{

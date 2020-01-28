@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.util.*;
 
 public class TestWork {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
                 SpringConfig.class
         );
         CurExEngine cee = context.getBean("curExEngine", CurExEngine.class);
         String sCarMark = "", sCurrencyName = "", sFilePath = "";
         if (args.length >= 2) {
-            sCurrencyName = args[0] + "Bean";
+            sCurrencyName = args[0];
             sCarMark = args[1];
         }
         if (args.length == 3) {sFilePath = args[2];}
